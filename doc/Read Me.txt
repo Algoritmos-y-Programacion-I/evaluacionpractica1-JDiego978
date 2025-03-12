@@ -1,2 +1,0 @@
-No olviden que en esta entrega se debe ejecutar el comando javadoc 
-y deben haber al menos 3 contratos de las funcionalidades solicitar, calcular o consultar 

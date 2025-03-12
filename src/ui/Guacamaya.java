@@ -100,33 +100,76 @@ public class Guacamaya {
 
     }
 
+    /** 
+     * Decripcion: Es un metodo que se encarga de preguntar el precio y la cantidad de unidades vendidas por un
+     * producto, va en orden primero pregunta por el producto 1, precio | valor, y asi continua hasta la cantidad de
+     * productos vendidos
+    */
     public static void solicitarDatos(){
-
-     
+        for (int i=0;i < unidades.length;i++){
+            System.out.println("Ingresa el precio del producto: "+(i+1));
+            precios[i] = reader.nextDouble();
+            System.out.println("Ingresa la cantidad de unidades vendidas del producto: "+(i+1));
+            unidades[i] = reader.nextInt();
+        }
     }
 
+    /** 
+     * Decripcion: Este metodo se encarga de calcular la cantidad total de unidades vendidas, esto mediante un ciclo que
+     * recorre cada cantidad y la va sumando en una variable
+     * 
+     * @return int totalUniVendi: Es un entero que devuelve el total de las unidades vendidas
+    */
     public static int calcularTotalUnidadesVendidas(){
-
-        return 0;
-
+        int totalUniVendi = 0;
+        for (int i=0;i < unidades.length;i++){
+            totalUniVendi += unidades[i];
+        }
+        return totalUniVendi;
     }
 
+    /** 
+     * Decripcion: Se encarga de tomar el total del dinero recaudado, y lo divide por la cantidad de productos que existen
+     * esto para poder sacar el precio promedio
+     * 
+     * @return double promedio: Es un double que devuelve el precio promedio
+    */
     public static double calcularPrecioPromedio(){
-
-        return 0;
-
+        double totalPrecio = calcularVentasTotales();
+        double promedio = totalPrecio / precios.length;
+        return promedio;
     }
 
+    /** 
+     * Decripcion: Se encarga de multiplicar el precio unitario de cada producto con las unidades tambien correspondientes
+     * y este valor lo va guardando y sumando en una variable
+     * 
+     * @return double totalPrecio: Se encarga de devolver los ingresos, dadas las ventas
+    */
     public static double calcularVentasTotales(){
-
-        return 0;
-
+        double totalPrecio = 0;
+        for (int i = 0;i < precios.length;i++){
+            totalPrecio += precios[i] * unidades[i];
+        }
+        return totalPrecio;
     }
 
+    /** 
+     * Decripcion: Se encarga de calcular cuantos productos superaron un limite minimo dado por el cliente
+     * esto mediante un ciclo donde guarda en una variable temporal el ingreso de cada producto (precio unitario * cantidad vendida)
+     * y esta variable es comparada con el limite, si es mayor se suma 1 en otra variable que son las que superan el limite
+     * @param limite double Es el limite dado por el usuario para comparar
+     * @return int superLimite: Devuelve cuantos productos superaron el limite del precio dado por el usuario
+    */
     public static int consultarReferenciasSobreLimite(double limite){
-
-        return 0;
-
+        int superLimite = 0;
+        for (int i=0;i < precios.length;i++){
+            double precioTemporal = precios[i] * unidades[i];
+            if (precioTemporal > limite){
+                superLimite += 1;
+            }
+        }
+        return superLimite;
     }
 
 }
